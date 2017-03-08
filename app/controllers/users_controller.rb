@@ -5,13 +5,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all.order("created_at DESC")
-    @user_roles = User.pluck(:role_id).uniq!
-    unless @user_roles.nil?
-      @roles = Role.where("id NOT IN (?)", @user_roles.compact!)
-    else
-      @roles = Role.all
-    end
-    #@roles = Role.where(:status => false)
+    @roles = Role.where(:status => false)
   end
 
   # GET /users/1
