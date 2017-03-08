@@ -5,13 +5,20 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version ruby 2.3.1
+
+* Rails version 4.2.7.1
 
 * System dependencies
+  Mysql2
+  Need to install imagemagick for upload image
+  sudo apt-get install Imagemagick
 
 * Configuration
-
+  Modifiy you database username and password in config/database.yml
 * Database creation
+	rake db:create
+	rake db:migrate
 
 * Database initialization
 
