@@ -1,0 +1,29 @@
+<%= form_tag('/update_roles_status', method: :put) do %>
+<table id="rolesHideTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+              <th>Hide Role</th>
+              <th>Name</th>
+              <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="usersList">
+        
+          <% @roles.each do |role| %>
+            <tr>
+              <td><%= check_box_tag('roles[]', value = "#{role.id}", checked = role.status, options = {})%></td>
+              <td><%= role.name %></td>
+              <td><%= role.status %></td>
+            </tr>            
+          <% end %>
+
+      
+        </tbody>
+    </table>
+    <%= submit_tag 'Submit', :class => "btn btn-primary"%>
+<% end %>
+<script type="text/javascript"> 
+  $(document).ready(function() {
+      $('#rolesHideTable').DataTable();
+  } );
+</script>

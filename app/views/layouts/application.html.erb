@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Myapp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
+  <%#= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" %>
+  <%#= stylesheet_link_tag "https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap4.min.css" %>
+  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+<div class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "Logo", dashboard_index_path, :class => "navbar-brand" %>
+      </div>
+      <div id="navbar1" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><%= link_to "Dashboard", dashboard_index_path %></li>
+          <li class="dropdown">
+            <a href="/users" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Users <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+           	  <li><%= link_to "Users List", users_path %></li>
+              <li><%= link_to "Add Users", new_user_path %></li>            
+            </ul>
+          </li>
+           <li class="dropdown">
+            <a href="/roles" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Roles <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+            	<li><%= link_to "Roles List", roles_path %></li>
+              <li><%= link_to "Add Roles", new_role_path %></li>            
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+    <!--/.container-fluid -->
+  </nav>
+
+<%= yield %>
+</div>
+<%#= javascript_include_tag 'https://code.jquery.com/jquery-1.12.4.js', 'data-turbolinks-track' => true %>
+<%#= javascript_include_tag 'https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js', 'data-turbolinks-track' => true %>
+<%#= javascript_include_tag 'https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap4.min.js', 'data-turbolinks-track' => true %>
+</body>
+</html>
