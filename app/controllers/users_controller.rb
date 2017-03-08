@@ -6,14 +6,10 @@ class UsersController < ApplicationController
   def index
     @users = User.all.order("created_at DESC")
     @user_roles = User.pluck(:role_id).uniq!
-    p 11111111111111111
-    p @user_roles
     unless @user_roles.nil?
-      p 333333333333
       @roles = Role.where("id NOT IN (?)", @user_roles.compact!)
     else
-      p 2222222222222
-      p @roles = Role.all
+      @roles = Role.all
     end
     #@roles = Role.where(:status => false)
   end
